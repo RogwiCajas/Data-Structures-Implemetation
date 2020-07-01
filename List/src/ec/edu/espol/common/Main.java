@@ -144,28 +144,39 @@ public class Main {
         System.out.println(numeros.toString());
         */
         //circular doubly
+        System.out.println("pruebas Circular doble");
+        CircularDoublyLinkedList<Integer> numeros=new CircularDoublyLinkedList<>();
+        numeros.addFirst(3);
+        numeros.addFirst(2);
+        numeros.addFirst(1);
+        numeros.addLast(4);
+        numeros.addLast(5);
+        numeros.addLast(6);
+        numeros.addLast(7);
+        //sera removido
+        //cd.addFirst(0);
         
-        /*CircularDoublyLinkedList<Integer> cd=new CircularDoublyLinkedList<>();
-        cd.addFirst(3);
-        cd.addFirst(2);
-        cd.addFirst(1);
-        cd.addLast(4);
-        cd.addLast(5);//sera removido
-        cd.addFirst(0);
+        System.out.println(numeros.toString());
+        System.out.println(numeros.removeFirst());
+        System.out.println(numeros.toString());
+        System.out.println(numeros.removeLast());
+        System.out.println(numeros.toString());
+        System.out.println(numeros.contains(4));
+        System.out.println(numeros.get(0));
+        System.out.println(numeros.getFirst());
+        System.out.println(numeros.getLast());
+        System.out.println(numeros.indexOf(3));
+        System.out.println(numeros.insert(1, 22));//
+        System.out.println(numeros.insert(6, 15));///insert al fnal
+        System.out.println(numeros.toString());
+        System.out.println(numeros.remove(1));
+        System.out.println(numeros.toString());
+        System.out.println(numeros.set(2, 35));
+        System.out.println(numeros.toString());
+        System.out.println(numeros.remove(3));
+        System.out.println(numeros.toString());
         
-        System.out.println(cd.toString());
-        System.out.println(cd.removeFirst());
-        System.out.println(cd.removeLast());
-        System.out.println(cd.contains(4));
-        System.out.println(cd.get(0));
-        System.out.println(cd.getFirst());
-        System.out.println(cd.getLast());
-        System.out.println(cd.indexOf(3));
-        System.out.println(cd.insert(1, 22));
-        System.out.println(cd.toString());
-        System.out.println(cd.remove(1));
-        System.out.println(cd.toString());
-        System.out.println(cd.set(2, 35));*/
+        
         /*DoublyLinkedList<Integer> d=new DoublyLinkedList<>();
         d.addLast(10);
         d.addLast(5);

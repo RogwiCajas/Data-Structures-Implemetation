@@ -65,7 +65,7 @@ public class CircularDoublyLinkedList <E> implements List<E> {
             return false;
         }else{
             int contador=0;
-            for(Node<E> q=this.last;contador<efectivo;q=q.getNext()){
+            for(Node<E> q=last.next;contador<efectivo;q=q.getNext()){
                 if(q.getData()==element){
                     return true;
                 }
@@ -110,11 +110,12 @@ public class CircularDoublyLinkedList <E> implements List<E> {
             last.next=last;
             last.previous=last;
         }else{
-            n.next = last.next;
-            last.next.setPrevious(n);
-            last.next = n;
+            Node<E> first=last.next;
+            last.next=n;
+            n.next=first;
+            first.previous=n;
             n.previous=last;
-            last = n;
+            
         }
         efectivo++;
         return true;
@@ -193,7 +194,7 @@ public class CircularDoublyLinkedList <E> implements List<E> {
             
         }else{
             int contador=0;
-            for(Node<E> q=this.last; contador<efectivo;q=q.getNext()){
+            for(Node<E> q=last.next; contador<efectivo;q=q.getNext()){
                 if(contador==index){
                     return q;
                 }
@@ -283,19 +284,23 @@ public class CircularDoublyLinkedList <E> implements List<E> {
     }
     @Override
     public String toString(){
+        
         StringBuilder cadena = new StringBuilder();
         cadena.append("[");
+        if(isEmpty()){
+            cadena.append("]");
+            return cadena.toString();
+        } 
         int contador=0;
-        for(Node<E> q=this.last.next; contador<efectivo;q=q.getNext()){
-            if(q==this.last){
-                cadena.append(q.getData());//Si es el ultimo, no es necesario agregar una coma
-            }else{
-                cadena.append(q.getData()).append(",");
-            }
+        for(Node<E> q=last.next; q!=last;q=q.getNext()){
+            cadena.append(q.data);
+            cadena.append(",");
+                    
             contador++;
         }
-        String cd = cadena.substring(0, cadena.length() - 1) + "]";
-        return cd;
+        cadena.append(last.data);
+        cadena.append("]");
+        return cadena.toString();
         
     }
     /*@Override
