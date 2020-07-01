@@ -111,32 +111,41 @@ public class Main {
         System.out.println(numeros.toString());
         */
         //circular Simply
+        
         /*
-        CircularSimplyLinkedList<Integer> cs=new CircularSimplyLinkedList<>();
-        cs.addFirst(3);
-        cs.addFirst(2);
-        cs.addFirst(1);
-        cs.addLast(4);
-        cs.addLast(5);//sera removido
-        cs.addFirst(0);
         
-        System.out.println(cs.toString());
-        System.out.println(cs.removeFirst());
-        System.out.println(cs.removeLast());
-        System.out.println(cs.contains(4));
-        System.out.println(cs.get(0));
-        System.out.println(cs.getFirst());
-        System.out.println(cs.getLast());
-        System.out.println(cs.indexOf(3));
-        System.out.println(cs.insert(1, 22));
-        System.out.println(cs.toString());
-        System.out.println(cs.remove(1));
-        System.out.println(cs.toString());
-        System.out.println(cs.set(2, 35));
+        System.out.println("Prueba Circular Simple");
+        CircularSimplyLinkedList<Integer> numeros=new CircularSimplyLinkedList<>();
+        numeros.addFirst(3);
+        numeros.addFirst(2);
+        numeros.addFirst(1);
+        numeros.addLast(4);
+        numeros.addLast(5);
+        numeros.addFirst(0);
         
+        System.out.println(numeros.toString());
+        System.out.println(numeros.removeFirst());
+        System.out.println(numeros.toString());
+        System.out.println(numeros.removeLast());
+        System.out.println(numeros.toString());
+        System.out.println(numeros.contains(4));
+        System.out.println(numeros.get(0));
+        System.out.println(numeros.getFirst());
+        System.out.println(numeros.getLast());
+        System.out.println(numeros.indexOf(3));
+        System.out.println(numeros.insert(1, 22));//
+        System.out.println(numeros.insert(5, 5));
+        System.out.println(numeros.toString());
+        System.out.println(numeros.remove(1));
+        System.out.println(numeros.toString());
+        System.out.println(numeros.set(2, 35));
+        System.out.println(numeros.toString());
+        System.out.println(numeros.remove(3));
+        System.out.println(numeros.toString());
+        */
         //circular doubly
         
-        CircularDoublyLinkedList<Integer> cd=new CircularDoublyLinkedList<>();
+        /*CircularDoublyLinkedList<Integer> cd=new CircularDoublyLinkedList<>();
         cd.addFirst(3);
         cd.addFirst(2);
         cd.addFirst(1);

@@ -50,6 +50,24 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         
     }
     @Override
+    public String toString(){
+        if(isEmpty()) return "[]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for(Node<E> p = last.next; p!=last; p=p.next)//hasta el penultimo
+        {
+            sb.append(p.data);
+            sb.append(",");
+        }
+        sb.append(last.data);
+        sb.append("]");
+        return sb.toString();
+           
+    }
+    
+    
+    
+    @Override
     public boolean addFirst(E e) {
         Node<E> n=new Node<>(e);
         if(isEmpty()){ 
@@ -110,7 +128,7 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         if(e==null){
             throw new NullPointerException();
         }else{
-            for(Node <E> n=last;index<current;n=n.next){
+            for(Node <E> n=last.next;index<current;n=n.next){
                 if(n.getData()==e){
                     return index;
                 }
@@ -205,7 +223,7 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
             
         }else{
             int contador=0;
-            for(Node<E> q=this.last; contador<current;q=q.getNext()){
+            for(Node<E> q=last.next; contador<current;q=q.getNext()){
                 if(contador==index){
                     return q;
                 }
