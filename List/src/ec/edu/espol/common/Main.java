@@ -26,6 +26,7 @@ public class Main {
         
         /*System.out.println("Prueba ArrayList");
         ArrayList<Integer> numeros=new ArrayList<>();
+        System.out.print(numeros);
         //del 0 al 5
         numeros.addFirst(3);
         numeros.addFirst(2);
@@ -54,6 +55,7 @@ public class Main {
         
         /*System.out.println("Prueba ArrayList");
         SimplyLinkedList<Integer> numeros= new SimplyLinkedList<>();
+        System.out.print(numeros);
         numeros.addFirst(3);
         numeros.addFirst(2);
         numeros.addFirst(1);
@@ -81,9 +83,10 @@ public class Main {
         System.out.println(numeros.toString());
         */
         
-        /* //doubly
+         //doubly
           System.out.println("Prueba DoublyLinkedList");
         DoublyLinkedList<Integer> numeros=new DoublyLinkedList<>();
+        System.out.print(numeros);
         numeros.addFirst(3);
         numeros.addFirst(2);
         numeros.addFirst(1);
@@ -109,7 +112,7 @@ public class Main {
         System.out.println(numeros.toString());
         System.out.println(numeros.remove(3));
         System.out.println(numeros.toString());
-        */
+        
         //circular Simply
         
         /*
@@ -144,7 +147,7 @@ public class Main {
         System.out.println(numeros.toString());
         */
         //circular doubly
-        System.out.println("pruebas Circular doble");
+        /*System.out.println("pruebas Circular doble");
         CircularDoublyLinkedList<Integer> numeros=new CircularDoublyLinkedList<>();
         numeros.addFirst(3);
         numeros.addFirst(2);
@@ -176,7 +179,7 @@ public class Main {
         System.out.println(numeros.remove(3));
         System.out.println(numeros.toString());
         
-        
+        */
         /*DoublyLinkedList<Integer> d=new DoublyLinkedList<>();
         d.addLast(10);
         d.addLast(5);

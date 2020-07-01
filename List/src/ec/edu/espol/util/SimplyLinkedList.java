@@ -259,7 +259,7 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
     @Override
     public String toString()
     {
-        if(isEmpty()) return "[]";
+        if(isEmpty()) return "[]\n";
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         for(Node<E> n=this.first;n!=this.last;n=n.getNext()){//hasta el penultimo nodo

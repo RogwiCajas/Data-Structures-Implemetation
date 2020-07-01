@@ -284,23 +284,17 @@ public class CircularDoublyLinkedList <E> implements List<E> {
     }
     @Override
     public String toString(){
-        
-        StringBuilder cadena = new StringBuilder();
-        cadena.append("[");
-        if(isEmpty()){
-            cadena.append("]");
-            return cadena.toString();
-        } 
-        int contador=0;
+        if(isEmpty()) return "[]\n";
+        StringBuilder sb= new StringBuilder();
+        sb.append("[");
         for(Node<E> q=last.next; q!=last;q=q.getNext()){
-            cadena.append(q.data);
-            cadena.append(",");
-                    
-            contador++;
+            sb.append(q.data);
+            sb.append(",");
+            
         }
-        cadena.append(last.data);
-        cadena.append("]");
-        return cadena.toString();
+        sb.append(last.data);
+        sb.append("]");
+        return sb.toString();
         
     }
     /*@Override

@@ -51,7 +51,7 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
     }
     @Override
     public String toString(){
-        if(isEmpty()) return "[]";
+        if(isEmpty()) return "[]\n";
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         for(Node<E> p = last.next; p!=last; p=p.next)//hasta el penultimo
