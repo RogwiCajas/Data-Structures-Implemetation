@@ -29,6 +29,7 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         public Node(E data){
             this.data=data;
             this.next=null;
+            this.previous=null;
         }
 
         public Node<E> getPrevious() {
@@ -99,21 +100,22 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
 
     @Override
     public boolean addFirst(E element) {
-        if(isEmpty() || element==null){
+        if(element==null){
             return false;
-        }else{
+        }else if(isEmpty()){
+            Node<E> n=new Node<>(element);
+            first=last=n;
+        }      
+        else{
             Node<E> node=new Node<>(element);//creo el nodo
-            
-            node.setNext(this.first);//enlazo el nuevo al first
+            node.setNext(first);//enlazo el nuevo al first
             first.setPrevious(node);//enlazo first al nuevo
-            first=node;//seteo el nuevo first
-            
-            efectivo++;
-            return true;
-            
+            first=node;//seteo el nuevo first                       
         }
+        efectivo++;
+        return true;
     }
-
+    
     @Override
     public boolean removeLast() {
         if(isEmpty()){
