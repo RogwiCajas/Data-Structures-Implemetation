@@ -156,6 +156,7 @@ public class Main {
         System.out.println(numeros.toString());
         */
         //circular doubly
+        /*
         System.out.println("pruebas Circular doble");
         CircularDoublyLinkedList<Integer> numeros=new CircularDoublyLinkedList<>();
         numeros.addFirst(3);
@@ -173,7 +174,7 @@ public class Main {
             System.out.println(it.next());
             
         }
-        
+        */
         /*System.out.println(numeros.toString());
         System.out.println(numeros.removeFirst());
         System.out.println(numeros.toString());
@@ -195,6 +196,7 @@ public class Main {
         System.out.println(numeros.toString());
         
         */
+        
         /*DoublyLinkedList<Integer> d=new DoublyLinkedList<>();
         d.addLast(10);
         d.addLast(5);
@@ -203,19 +205,19 @@ public class Main {
         
         System.out.println(d.toString());
         System.out.println(d.esPalindromoRecursivo());
-        
+        */
         CircularDoublyLinkedList<Integer> c;
         c = new CircularDoublyLinkedList<>();
-        c.addLast(10);
-        c.addLast(5);
-        c.addLast(5);
-        c.addLast(10);
+        c.addLast(1);
+        c.addLast(2);
+        c.addLast(3);
+        c.addLast(4);
         
         System.out.println(c.toString());
         c.switchFirstandLast();
         System.out.println(c.toString());
         
-        LinkedList<Integer> A= new LinkedList<>();
+        /*LinkedList<Integer> A= new LinkedList<>();
         LinkedList<Integer> B= new LinkedList<>();
         A.add(2);
         A.add(3);
@@ -233,8 +235,8 @@ public class Main {
         System.out.print(A.toString());
         System.out.print(B.toString());
         System.out.print(suma.toString());
-        
         */
+        
         //EJERCICIO1
         /*System.err.println(nCambios("()"));
         System.err.println(nCambios("))"));

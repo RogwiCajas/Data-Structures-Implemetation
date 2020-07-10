@@ -557,9 +557,9 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         return esPalindromoRecursivo(first,last,0, efectivo-1);
     }
     private boolean esPalindromoRecursivo(Node<E> start,Node<E> fin,int i, int  j){
-        if(start.getData()!=fin.getData()){
+        if(!(start.getData().equals(fin.getData()))){
             return false;
-        }else if(start.getData()==fin.getData() && j>=i){//si el siguiente es igul
+        }else if(start.getData().equals(fin.getData()) && j>=i){//si el siguiente es igul
             return esPalindromoRecursivo(start.getNext(),fin.getPrevious(),i+1,j-1);
             
         }else{

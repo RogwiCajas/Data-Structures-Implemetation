@@ -535,15 +535,15 @@ public class CircularDoublyLinkedList <E> implements List<E> {
         Node<E> first=last.next;
         Node<E> l=last;
         l.setNext(first.next);
-        first.next.setPrevious(last);
+        first.next.setPrevious(l);
         
         l.previous.setNext(first);
         first.setPrevious(l.previous);
         
-        first.setNext(last);
-        last.setPrevious(first);
+        first.setNext(l);
+        l.setPrevious(first);
         
-        
+        last=first;
         
     }
 }
