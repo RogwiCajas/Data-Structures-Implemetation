@@ -82,12 +82,14 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
     }
 
     @Override
-    public E getFirst() {
+    public E getFirst() throws NullPointerException{
+        if(isEmpty()) throw new NullPointerException("Obteniendo primer elemento de una ista vacía");
         return this.first.getData();
     }
 
     @Override
-    public E getLast() {
+    public E getLast() throws NullPointerException{
+        if(isEmpty()) throw new NullPointerException("Obteniendo primer elemento de una ista vacía");
         return this.last.getData();
     }
 

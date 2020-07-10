@@ -322,16 +322,19 @@ public class CircularDoublyLinkedList <E> implements List<E> {
     
      public Iterator<E> iterator(){
          Iterator<E>it= new Iterator<E>(){
-             public Node<E> p = last.next;
+             public Node<E> p = last.next;//inicio
+             public int index=0;
              @Override
              public boolean hasNext() {
-                return !(p.getNext()==last.next);
+                return !(index==efectivo);
+                //return !(isEmpty());  carrusel
              }
 
              @Override
              public E next() {
                 E tmp = p.getData();
                 p=p.getNext();
+                index++;
                 return tmp;
              }
              

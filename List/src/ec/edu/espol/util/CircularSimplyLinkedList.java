@@ -125,7 +125,7 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
     @Override
     public int indexOf(E e) throws NullPointerException{
         int index=0;
-        if(e==null){
+        if(e==null||isEmpty()){
             throw new NullPointerException();
         }else{
             for(Node <E> n=last.next;index<current;n=n.next){
@@ -257,8 +257,10 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
     public boolean contains(E e) throws IllegalArgumentException{
         if(e==null) throw new IllegalArgumentException("Argumento nullo");
         int index=0;
-        for(Node<E> n=last;index<current;n=n.getNext()){
-            if(n.getData()==e) return true;           
+        for(Node<E> n=last.next;index<current;n=n.getNext()){
+            if(n.getData()==e) 
+                return true;
+            index++;
         }
         return false;
     }
@@ -290,16 +292,19 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
     @Override
     public Iterator<E> iterator(){
          Iterator<E>it= new Iterator<E>(){
-             public Node<E> p = last;
+             public Node<E> p = last.next;//inicio
+             public int index=0;
              @Override
              public boolean hasNext() {
-                return p!=null;
+                return p!=null;//carrusel
+                //return !(index==efectivo) recorre una vez
              }
 
              @Override
              public E next() {
                 E tmp = p.getData();
                 p=p.getNext();
+                index++;
                 return tmp;
              }
              
