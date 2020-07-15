@@ -258,7 +258,7 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         if(e==null) throw new IllegalArgumentException("Argumento nullo");
         int index=0;
         for(Node<E> n=last.next;index<current;n=n.getNext()){
-            if(n.getData()==e) 
+            if(n.getData().equals(e)) 
                 return true;
             index++;
         }

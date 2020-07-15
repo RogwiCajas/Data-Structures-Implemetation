@@ -66,7 +66,7 @@ public class CircularDoublyLinkedList <E> implements List<E> {
         }else{
             int contador=0;
             for(Node<E> q=last.next;contador<efectivo;q=q.getNext()){
-                if(q.getData()==element){
+                if(q.getData().equals(element)){
                     return true;
                 }
                 contador++;

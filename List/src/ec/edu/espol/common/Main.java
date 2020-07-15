@@ -296,6 +296,7 @@ public class Main {
         while(itA.hasNext()){
             int sum=0;
             int a=(Integer)itA.next();
+            
             while(itB.hasNext()){
                 int b= (Integer)itB.next();
                 if(b<a){
@@ -487,7 +488,7 @@ public class Main {
        return sum;
    }
     
-    
+   
     
     
     

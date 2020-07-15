@@ -203,7 +203,8 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
     public boolean contains(E e) throws IllegalArgumentException{
         if(e==null) throw new IllegalArgumentException("Argumento nullo");
         for(Node<E> n=this.first;n!=null;n=n.getNext()){
-            if(n.getData()==e) return true;           
+            if(n.getData().equals(e)) 
+                return true;           
         }
         return false;
     }

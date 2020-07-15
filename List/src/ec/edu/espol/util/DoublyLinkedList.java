@@ -63,7 +63,7 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             return false;
         }else{
             for(Node<E> q=this.first;q!=null;q=q.getNext()){
-                if(q.getData()==element){
+                if(q.getData().equals(element)){
                     return true;
                 }
                 
@@ -567,8 +567,34 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             
             
         
-    }
+         }
         
+    }
+    
+    public void removeAll(E e){
+        ListIterator<E> itInicial=this.listiterator();
+        ListIterator<E> itFinal=this.listiterator(efectivo);
+        // 2, 4,5,6,7,5,3,4
+        removeAll(itInicial,itFinal,e);
+    }
+    private void removeAll(ListIterator<E> first, ListIterator<E> last,E e){
+        // |0  |2
+        if(last.hasPrevious()&&first.hasNext() ){
+            E data=last.previous();
+            E data2=first.next();
+            if(e.equals(data)){
+                last.next();
+                last.remove();
+            }
+            if(e.equals(data2)){
+                first.previous();
+                first.remove();
+            }
+            removeAll(first,last,e);
+        
+            
+            
+        }
     }
 }
 
