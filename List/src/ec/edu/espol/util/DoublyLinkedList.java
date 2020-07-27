@@ -334,11 +334,6 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
     }
     
     
-
-    public void reverse(){
-        
-    }
-    
     public static boolean isReverse(DoublyLinkedList<Integer> l1, DoublyLinkedList<Integer> l2){
         //ver si l2 es reverse de l1
         return true;
@@ -595,6 +590,36 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             
             
         }
+    }
+    public boolean reverse(){
+        if(isEmpty() || efectivo==1)   return false;
+        return reverse(first,last);
+        
+    }
+    
+    private boolean reverse(Node<E> f, Node<E> l){
+        if(f==l)    return true;
+        else if(l.getNext()==f)  return true;
+        else{
+            E e = f.getData();
+            f.setData(l.getData());
+            l.setData(e);
+            return reverse(f.getNext(),l.getPrevious());
+        }
+    }
+
+    public DoublyLinkedList<E> slicing(int start,int end){
+        DoublyLinkedList<E> nueva = new DoublyLinkedList<>();
+        if(!isEmpty() && start<end){
+            Node<E> p = nodeIndex(start);
+            while(start!= end){
+                nueva.addLast(p.data);
+                p=p.next;
+                start++;
+            }
+        }
+        return nueva;
+   
     }
 }
 

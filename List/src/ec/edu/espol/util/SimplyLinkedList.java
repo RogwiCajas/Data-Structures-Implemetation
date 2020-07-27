@@ -291,5 +291,59 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         };
         return it;
     }
-    
+    //@Override
+    public void reverse() {
+        reverse(0,current-1);
+    }
+    private void reverse(int start, int end){
+       Node<E> inicio =getNode  (start);
+       Node<E> fin =getNode(end);
+        if(start<end){
+             E tmp= inicio.getData();
+             E tmp2= fin.getData();
+             fin.setData(tmp);
+             inicio.setData(tmp2);
+            reverse(++start,--end);
+        }
+    }
+     public List<E> slicing(int start, int end) {
+       List<E> l= new SimplyLinkedList<>();
+       Node<E> inicio =getNode(start);
+       Node<E> fin =getNode(end);
+       if(start<0 || end<0|| start>=end || start==end)
+            return l;
+        else 
+            for(Node<E> p =inicio;p!=fin;p=p.getNext()){
+                E element=p.getData();
+                l.addLast(element);
+            }
+        return l;
+    }
+    public Iterator<E> iteratorStep(int start, int step){
+        if(start>this.size()||start<0) throw new IndexOutOfBoundsException("Indice fuera del rango");
+        Iterator<E> it = new Iterator<E>() {           
+
+            Node<E> p = getNode(start);
+            
+            @Override 
+            public boolean hasNext() {
+                return p!=null;
+            } 
+
+            @Override 
+
+            public E next() {
+                Node<E> temp = p;
+                int i=0;
+                while(i<step && p!=null){
+                    p=p.next;
+                    i++;
+                }
+                return temp.data;
+            } 
+
+        }; 
+
+        return it; 
+    } 
 }

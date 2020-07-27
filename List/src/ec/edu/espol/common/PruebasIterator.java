@@ -11,7 +11,7 @@ import ec.edu.espol.util.DoublyLinkedList;
  *
  * @author cajas
  */
-public class NewMain {
+public class PruebasIterator {
 
     /**
      * @param args the command line arguments
