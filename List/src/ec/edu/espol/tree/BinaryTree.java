@@ -22,6 +22,32 @@ public class BinaryTree<E> {
         }
     }   
     //constructor con raiz nula;
+    /**
+     * 
+     * @param n
+     * @return 
+     */
+    public boolean isFull(){    
+       return isFull(root); 
+    }
+    private boolean isFull(Node<E> n){
+        if(n == null)
+            return true;
+        else if((n.left == null && n.right != null)&&(n.left != null && n.right == null)){
+            return false;
+        }
+        return  height(n.left) == height(n.right) && isFull(n.left) &&isFull(n.right);
+    }
+    
+    public int height(){
+        return height(root);
+    }
+    private int height(Node<E> n){
+        if(n==null)
+            return 0;
+        else 
+            return 1+ Math.max(height(n.left), height(n.right));
+    }
     
     /**
     *Consulta si el arbol esta vacio
@@ -29,14 +55,26 @@ public class BinaryTree<E> {
     public boolean isEmpty(){
         return root==null;
     }
-    
+    /**
+     * 
+     * @return numero de nodos en el arbol
+     */
+    public int size(){
+        return size(root);
+    }
+    private int size(Node<E> n){
+        if(n==null) 
+            return 0;
+        else
+            return 1+size(n.right)+size(n.left);
+        
+    }
     /**
      * 
      * @param child
      * @param parent
      * @return 
      */
-    
     public boolean add(E child,E parent){
         Node<E> nc=searchNode(child);
         if(nc!=null) return false;
@@ -89,7 +127,62 @@ public class BinaryTree<E> {
             return searchNode(data,n.right);
         }
     }
+    public boolean remove(E child){
+        if(child==null|| isEmpty()) return false;
+        if(root.data.equals(child)){
+            root = null;
+            return true;
+        }
+        Node<E> np=searchParent(child);
+        if(np!=null){
+            if(np.left!=null && np.left.data.equals(child)){
+                np.left = null;
+            }else
+                np.right = null;
+            return true;
+        }
+        return false;
+    }
+    private Node<E> searchParent(E child){
+        return searchParent(child, root);
+    }
+    private Node<E> searchParent(E child, Node<E> n){
+        if(n==null) 
+            return null;
+        else if((n.left!=null && n.left.data.equals(child))|| (n.right!=null)&&n.right.data.equals(child))
+            return n;
+        else{
+            Node<E> nl=searchParent(child,n.left);
+            if(nl != null) return nl;
+            return searchParent(child, n.right);
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

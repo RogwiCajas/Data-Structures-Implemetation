@@ -278,6 +278,7 @@ public class ArrayList <E> implements List<E>,Iterable<E>{
         return it;
     }
     public ListIterator<E> listiterator() throws IndexOutOfBoundsException{
+            
             ListIterator<E> lit = new ListIterator<E>(){
             
             private int i = 0;
@@ -328,21 +329,19 @@ public class ArrayList <E> implements List<E>,Iterable<E>{
                     throw new IndexOutOfBoundsException("Valor fuera de rango");
                 }
             }
-
-            @Override
+            /**
+             * Remueve el ultimo valor que se obtuvo con next()
+             */
+             @Override
             public void remove() {
+                i--;
                 if(i< current &&  i>= 0){
-                    for(int j = i; j < current - 1; j++){
+                    for(int j = i; j < current; j++){
                     array[j] = array[ j+ 1];
                     }
                     array[--current] = null;
-                    i--;//desplaza el iterator hacia atras.
-                    
+                                        
                 }
-                
-                
-                
-                
             }
 
             @Override
@@ -354,28 +353,29 @@ public class ArrayList <E> implements List<E>,Iterable<E>{
 
             @Override
             public void add(E arg0) {
-               /* 
-                if(arg0== null || index >= current|| index < 0){
-                    return false;
-                }else if(current== capacity){
+               
+                if(current== capacity){
                     addCapacity();
                 }
-                for(int i = current; i > index; i--){
-                    array[i] = array[i-1];
+                for(int j = current; j > i; j--){
+                    array[j] = array[j-1];
                 }
-                 array[index] = e;
-                current++;*/
-                insert(i, arg0);
+                array[i] = arg0;
+                current++;
+                
                 
             }
         };
         return lit;
     }
     
-    public ListIterator<E> listiterator(int index)
+    public ListIterator<E> listiterator(int index) throws IndexOutOfBoundsException
     {
-        ListIterator<E> lit = new ListIterator<E>(){
-            //private Node<E> p = searchNode(index);
+            if(index<0 ||index>=current){
+                throw  new IndexOutOfBoundsException("Index debe estar entre 0 y current-1");
+            }
+            ListIterator<E> lit = new ListIterator<E>(){
+                        
             private int i = index;
             @Override
             public boolean hasNext() {
@@ -425,20 +425,19 @@ public class ArrayList <E> implements List<E>,Iterable<E>{
                 }
             }
 
-            @Override
+            /**
+             * Remueve el ultimo valor que se obtuvo con next()
+             */
+             @Override
             public void remove() {
+                i--;
                 if(i< current &&  i>= 0){
-                    for(int j = i; j < current - 1; j++){
+                    for(int j = i; j < current; j++){
                     array[j] = array[ j+ 1];
                     }
                     array[--current] = null;
-                    i--;//desplaza el iterator hacia atras.
-                    
+                                        
                 }
-                
-                
-                
-                
             }
 
             @Override
@@ -450,18 +449,16 @@ public class ArrayList <E> implements List<E>,Iterable<E>{
 
             @Override
             public void add(E arg0) {
-               /* 
-                if(arg0== null || index >= current|| index < 0){
-                    return false;
-                }else if(current== capacity){
+               
+                if(current== capacity){
                     addCapacity();
                 }
-                for(int i = current; i > index; i--){
-                    array[i] = array[i-1];
+                for(int j = current; j > i; j--){
+                    array[j] = array[j-1];
                 }
-                 array[index] = e;
-                current++;*/
-                insert(i, arg0);
+                array[i] = arg0;
+                current++;
+                
                 
             }
         };
