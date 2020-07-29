@@ -229,7 +229,7 @@ public class ArrayList <E> implements List<E>,Iterable<E>{
         return true;
     }
    /**
-   * Este Metodo es para implementar la capacidad del Array
+   * Este Metodo es para imcrementar la capacidad del Array
    */
     private void addCapacity()
     {
@@ -258,7 +258,10 @@ public class ArrayList <E> implements List<E>,Iterable<E>{
         sb.append("]");
         return sb.toString();
     }
-
+    /**
+     * 
+     * @return un Iterator de la arrayList 
+     */
     @Override
     public Iterator<E> iterator() {
             Iterator<E> it = new Iterator<E>() {
@@ -277,6 +280,11 @@ public class ArrayList <E> implements List<E>,Iterable<E>{
         };
         return it;
     }
+    /**
+     * 
+     * @return ListIterator del ArrayList con inicio en i=0
+     * @throws IndexOutOfBoundsException 
+     */
     public ListIterator<E> listiterator() throws IndexOutOfBoundsException{
             
             ListIterator<E> lit = new ListIterator<E>(){
@@ -369,6 +377,12 @@ public class ArrayList <E> implements List<E>,Iterable<E>{
         return lit;
     }
     
+    /**
+     * 
+     * @param index indice de  inicio del iterator
+     * @return ListIterator del ArrayList
+     * @throws IndexOutOfBoundsException 
+     */
     public ListIterator<E> listiterator(int index) throws IndexOutOfBoundsException
     {
             if(index<0 ||index>=current){

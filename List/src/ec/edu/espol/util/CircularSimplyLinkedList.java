@@ -49,6 +49,10 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         }
         
     }
+    /**
+     * Crea una representacion en string de la lista
+     * @return 
+     */
     @Override
     public String toString(){
         if(isEmpty()) return "[]\n";
@@ -66,7 +70,11 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
     }
     
     
-    
+    /**
+     * Arrega el elemento e al inicio de la lista enlazada
+     * @param e
+     * @return true si se agrego correctamente.
+     */
     @Override
     public boolean addFirst(E e) {
         Node<E> n=new Node<>(e);
@@ -81,7 +89,11 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         return true;
             
     }
-
+    /**
+     * Agrega el elemnto e al final de la Lista enlazada
+     * @param e
+     * @return True si se agrego correctamente.
+     */
     @Override
     public boolean addLast(E e) {
         Node<E> n = new Node<>(e);
@@ -98,7 +110,11 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         current++;
         return true;
     }
-
+    /**
+     * Consulta el primer elemento de la lista enlazada.
+     * @return E valor del primer elemento.
+     * @throws NullPointerException si la lista esta vacia.
+     */
     @Override
     public E getFirst() throws NullPointerException{
         if(isEmpty()){
@@ -109,7 +125,11 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
             return last.next.getData();
         }
     }
-
+    /**
+     * Consulta el ultimo elemento de la lista enlazada.
+     * @return E valor del ultimo elemento.
+     * @throws NullPointerException si la lista esta vacia
+     */
     @Override
     public E getLast() throws NullPointerException{
         if(isEmpty()){
@@ -121,7 +141,14 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         }
         
     }
-
+    
+    /**
+     * Consulta el indice del elemento e.
+     * @param e
+     * @return int indice del elemento e.
+     * @throws IllegalArgumentException si el elemento e es null, 
+     * -1 si el elemento no se encuentra en la lista
+     */
     @Override
     public int indexOf(E e) throws NullPointerException{
         int index=0;
@@ -137,12 +164,18 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         }
         return -1;
     }
-
+    /**
+     * Consulta el tamaño de la lista enlazada
+     * @return tamaño en int
+     */
     @Override
     public int size() {
         return current;
     }
-
+    /**
+     * Remueve el ultimo elemento de la lista enlazada.
+     * @return true si se elimino correctamente
+     */
     @Override
     public boolean removeLast() throws NullPointerException{
         if(isEmpty()) throw  new NullPointerException();
@@ -160,6 +193,11 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         current--;
         return true;
     }
+    /**
+     * Obtiene el Nodo previo al Nodo p
+     * @param p
+     * @return 
+     */
     private Node<E> getPrevious(Node<E> p) throws IllegalArgumentException{//lanzar exepcion illegal argument
         if(p==null) throw  new IllegalArgumentException();
         int index=0;
@@ -170,6 +208,10 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         }
         return null;
     }
+    /**
+     * Remueve el primer elemento de la lista enlazada.
+     * @return 
+     */
     @Override
     public boolean removeFirst() throws NullPointerException{
         if(isEmpty()) throw  new NullPointerException();
@@ -186,7 +228,13 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         current--;
         return true;
     }
-
+    /**
+     * insera un elemento e en el indice index.
+     * @param index
+     * @param e
+     * @return true, si se inserta correctamente.
+     * @throws IndexOutOfBoundsException si index esta fuera de rango.
+     */
     @Override
     public boolean insert(int index, E e) throws IndexOutOfBoundsException, NullPointerException{
         if(index<0 || index>this.size()){
@@ -217,6 +265,12 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         }
         
     }
+    /**
+     * Obtiene el Nodo en la posicion index.
+     * @param index
+     * @return
+     * @throws IndexOutOfBoundsException 
+     */
     private Node<E> getNode(int index) throws IndexOutOfBoundsException{
         if(isEmpty()|| (index<0 || index>=current)){//si esta vacio o el indice no es correcto
             throw new IndexOutOfBoundsException("indice no valido o lista vacia");
@@ -234,7 +288,13 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         
         
     }
-
+    /**
+     * Cambia el valor de la lista en la posicion "index" por "e".
+     * @param index
+     * @param e
+     * @return true si se modifico correctamente.
+     * @throws IndexOutOfBoundsException si index esta fuera de rango.
+     */
     @Override
     public boolean set(int index, E e) throws IndexOutOfBoundsException{
         if(index<0 || index>=this.size()){
@@ -243,16 +303,29 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         getNode(index).setData(e);
         return true;
     }
+    /**
+     * Consulta si la lista esta vacia.
+     * @return true si está vacia.
+     */
     @Override
     public boolean isEmpty() {
         return last == null;
     }
-
+    /**
+     * Consulta el valor de la lista en index
+     * @param index
+     * @return E valor en la posicion index.
+     */
     @Override
     public E get(int index) {
         return getNode(index).getData();
     }
-
+    /**
+     * Consulta si el elemento e esta dentro de la lista.
+     * @param e
+     * @return true si la lista contiene a e.
+     * @throws IllegalArgumentException si e es null.
+     */
     @Override
     public boolean contains(E e) throws IllegalArgumentException{
         if(e==null) throw new IllegalArgumentException("Argumento nullo");
@@ -264,7 +337,12 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         }
         return false;
     }
-
+    /**
+     * Remueve un elemento de la lista en la posicion index
+     * @param index
+     * @return true si se removió.
+     * @throws IndexOutOfBoundsException si index esta fuera de rango. 
+     */
     @Override
     public boolean remove(int index) throws IndexOutOfBoundsException {
         if(isEmpty()) return false;
@@ -288,16 +366,20 @@ public class CircularSimplyLinkedList<E> implements List<E>,Iterable<E>{
         }
         
     }
-    
+    /**
+     * 
+     * @return objeto iterator de la lista. 
+     */
     @Override
     public Iterator<E> iterator(){
          Iterator<E>it= new Iterator<E>(){
              public Node<E> p = last.next;//inicio
-             public int index=0;
+             public int index=0;//util para saber donde acaba el ciclo
              @Override
              public boolean hasNext() {
-                return p!=null;//carrusel
-                //return !(index==efectivo) recorre una vez
+                //return p!=null;//carrusel
+                return !(index==current);// recorre una vez
+                //return p!=last;
              }
 
              @Override

@@ -50,7 +50,11 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         }
         
     }
-    
+    /**
+     * Arrega el elemento e al inicio de la lista enlazada
+     * @param e
+     * @return true si se agrego correctamente.
+     */
     @Override
     public boolean addFirst(E e) {
         if(e==null) return false;
@@ -65,7 +69,11 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         current++;
         return true;
     }
-
+    /**
+     * Agrega el elemnto e al final de la Lista enlazada
+     * @param e
+     * @return True si se agrego correctamente.
+     */
     @Override
     public boolean addLast(E e) {
         if(e==null) return false;
@@ -80,19 +88,33 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         current++;
         return true;
     }
-
+    /**
+     * Consulta el primer elemento de la lista enlazada.
+     * @return E valor del primer elemento.
+     * @throws NullPointerException si la lista esta vacia.
+     */
     @Override
     public E getFirst() throws NullPointerException{
         if(isEmpty()) throw new NullPointerException("Obteniendo primer elemento de una ista vacía");
         return this.first.getData();
     }
-
+    /**
+     * Consulta el ultimo elemento de la lista enlazada.
+     * @return E valor del ultimo elemento.
+     * @throws NullPointerException si la lista esta vacia
+     */
     @Override
     public E getLast() throws NullPointerException{
         if(isEmpty()) throw new NullPointerException("Obteniendo primer elemento de una ista vacía");
         return this.last.getData();
     }
-
+    /**
+     * Consulta el indice del elemento e.
+     * @param e
+     * @return int indice del elemento e.
+     * @throws IllegalArgumentException si el elemento e es null, 
+     * -1 si el elemento no se encuentra en la lista
+     */
     @Override
     public int indexOf(E e) throws IllegalArgumentException{
         if(e==null ){
@@ -109,12 +131,18 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         }
         return -1;
     }
-
+    /**
+     * Consulta el tamaño de la lista enlazada
+     * @return tamaño en int
+     */
     @Override
     public int size() {
         return this.current;
     }
-
+    /**
+     * Remueve el ultimo elemento de la lista enlazada.
+     * @return true si se elimino correctamente
+     */
     @Override
     public boolean removeLast() {
          if(isEmpty()) return false;
@@ -131,7 +159,10 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
          current--;
          return true;
     }
-
+    /**
+     * Remueve el primer elemento de la lista enlazada.
+     * @return 
+     */
     @Override
     public boolean removeFirst() {
         if(isEmpty()) return false;
@@ -148,7 +179,13 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         return true;
         
     }
-
+    /**
+     * insera un elemento e en el indice index.
+     * @param index
+     * @param e
+     * @return true, si se inserta correctamente.
+     * @throws IndexOutOfBoundsException si index esta fuera de rango.
+     */
     @Override
     public boolean insert(int index, E e) throws IndexOutOfBoundsException{
         if(index<0 || index>this.size()){
@@ -176,7 +213,13 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         }
         
     }
-
+    /**
+     * Cambia el valor de la lista en la posicion "index" por "e".
+     * @param index
+     * @param e
+     * @return true si se modifico correctamente.
+     * @throws IndexOutOfBoundsException si index esta fuera de rango.
+     */
     @Override
     public boolean set(int index, E e) throws IndexOutOfBoundsException{
         if(index<0 || index>=this.size()){
@@ -185,7 +228,10 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         getNode(index).setData(e);
         return true;
     }
-
+    /**
+     * Consulta si la lista esta vacia.
+     * @return true si está vacia.
+     */
     @Override
     public boolean isEmpty() {
         if(first==null&&last==null){
@@ -193,12 +239,21 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         }
         return false;
     }
-
+    /**
+     * Consulta el valor de la lista en index
+     * @param index
+     * @return E valor en la posicion index.
+     */
     @Override
     public E get(int index) {
         return getNode(index).getData();
     }
-
+    /**
+     * Consulta si el elemento e esta dentro de la lista.
+     * @param e
+     * @return true si la lista contiene a e.
+     * @throws IllegalArgumentException si e es null.
+     */
     @Override
     public boolean contains(E e) throws IllegalArgumentException{
         if(e==null) throw new IllegalArgumentException("Argumento nullo");
@@ -208,7 +263,12 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         }
         return false;
     }
-
+    /**
+     * Remueve un elemento de la lista en la posicion index
+     * @param index
+     * @return true si se removió.
+     * @throws IndexOutOfBoundsException si index esta fuera de rango. 
+     */
     @Override
     public boolean remove(int index) throws IndexOutOfBoundsException {
         if(isEmpty()) return false;
@@ -232,6 +292,11 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         }
         
     }
+    /**
+     * Obtiene el Nodo previo al Nodo p
+     * @param p
+     * @return 
+     */
     private Node<E> getPrevious(Node<E> p){//lanzar exepcion illegal argument
         if(p==this.first || p==null) return null;
         for(Node<E> q=this.first;q!=null;q=q.getNext()){
@@ -241,6 +306,12 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         }
         return null;
     }
+    /**
+     * Obtiene el Nodo en la posicion index.
+     * @param index
+     * @return
+     * @throws IndexOutOfBoundsException 
+     */
     private Node<E> getNode(int index) throws IndexOutOfBoundsException{
         if(isEmpty()|| (index<0 || index>=current)){//si esta vacio o el indice no es correcto
             throw new IndexOutOfBoundsException("indice no valido o lista vacia");
@@ -258,7 +329,10 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         
         
     }
-    
+    /**
+     * Crea una representacion String de la lista
+     * @return 
+     */
     @Override
     public String toString()
     {
@@ -273,6 +347,10 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         sb.append("]");
         return sb.toString();
     }
+    /**
+     * 
+     * @return objeto iterator de la lista. 
+     */
     @Override
     public Iterator<E> iterator() {
         Iterator<E> it = new Iterator<E>() {
@@ -291,7 +369,10 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
         };
         return it;
     }
-    //@Override
+    /**
+     * Invierte el orden de la listta
+     * 
+     */  
     public void reverse() {
         reverse(0,current-1);
     }
@@ -306,10 +387,16 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
             reverse(++start,--end);
         }
     }
+    /**
+     * Crea un recorte de la lista desde la posicion start, hasta end
+     * @param start
+     * @param end
+     * @return 
+     */
      public List<E> slicing(int start, int end) {
        List<E> l= new SimplyLinkedList<>();
        Node<E> inicio =getNode(start);
-       Node<E> fin =getNode(end);
+       Node<E> fin =getNode(end);//Optimizar
        if(start<0 || end<0|| start>=end || start==end)
             return l;
         else 
@@ -319,6 +406,13 @@ public class SimplyLinkedList <E> implements List<E>, Iterable<E>{
             }
         return l;
     }
+    /**
+     * Crea un iterator que empieza en la posicion start e itera con saltos step
+     * @param start
+     * @param step
+     * @return 
+     */ 
+     
     public Iterator<E> iteratorStep(int start, int step){
         if(start>this.size()||start<0) throw new IndexOutOfBoundsException("Indice fuera del rango");
         Iterator<E> it = new Iterator<E>() {           
