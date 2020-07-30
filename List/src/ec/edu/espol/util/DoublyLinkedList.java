@@ -57,6 +57,11 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         }
         
     }
+    /**
+     * Consulta si la lista contiene al elemento
+     * @param element
+     * @return true si contiene al elemento.
+     */
     @Override
     public boolean contains(E element) {
         if(isEmpty()|| element==null){
@@ -71,12 +76,19 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         }
         return false;
     }
-
+    /**
+     * Tamaño de la lista
+     * @return tamaño entero de la lista
+     */
     @Override
     public int size() {
         return efectivo;
     }
-
+    /**
+     * Agrega un elmento al final de la lista.
+     * @param element
+     * @return true, si fue agregado correctamente.
+     */
     @Override
     public boolean addLast(E element) {
         if( element==null){
@@ -97,7 +109,11 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         efectivo++;
         return true;
     }
-
+    /**
+     * Agrega un elemento al inicio de la lista
+     * @param element
+     * @return true, si el elemento es agregado correctamente.
+     */
     @Override
     public boolean addFirst(E element) {
         if(element==null){
@@ -115,7 +131,10 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         efectivo++;
         return true;
     }
-    
+    /**
+     * Remueve el ultimo elemento de la lista.
+     * @return true, si se removio correctamente.
+     */
     @Override
     public boolean removeLast() {
         if(isEmpty()){
@@ -138,7 +157,10 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         efectivo--;
         return true;
     }
-
+    /**
+     * Remueve el primer elemento de la lista.
+     * @return true si se elimino correctamente.
+     */
     @Override
     public boolean removeFirst() {
         if(isEmpty()){
@@ -161,7 +183,10 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         efectivo--;
         return true;
     }
-
+    /**
+     * Consulta el primer elemento de la lista
+     * @return el primer objeto de la lista.
+     */
     @Override
     public E getFirst() {
          if(isEmpty()){
@@ -170,7 +195,10 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             return this.first.getData();
         }
     }
-
+    /**
+     * Consulta el ultimo elemento de la lista
+     * @return el ultimo objeto de la lista.
+     */
     @Override
     public E getLast() {
          if(isEmpty()){
@@ -179,7 +207,12 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             return this.last.getData();
         }
     }
-
+    /**
+     * Cambia el valor de la lista en Index por el valor enviado.
+     * @param index posicion a cambiar
+     * @param element valor nuevo
+     * @return true si se cambio correctamente.
+     */
     @Override
     public boolean set(int index, E element) {
         if(isEmpty() || element==null|| index<0||index>=efectivo){
@@ -192,7 +225,11 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             
         }
     }
-
+    /**
+     * Consulta el elemento de la lista que ocupe la poscicion requerida.
+     * @param index posicion.
+     * @return valor en index.
+     */
     @Override
     public E get(int index) {
         if(isEmpty()|| (index<0||index>=efectivo)){//si esta vacio o el indice no es correcto
@@ -211,12 +248,21 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         }
         return null;
     }
-
+    /**
+     * Consulta si la lista esta vacia
+     * @return true si esta vacia.
+     */
     @Override
     public boolean isEmpty() {
         return efectivo==0;
     }
-
+    /**
+     * Inserta un nuevo elemento en la posicion index, desplaza a los elementos
+     * subsecuentes hacias adelante.
+     * @param index posicion 
+     * @param element nuevo elemento.
+     * @return true, si se insertó correctamente.
+     */
     @Override
     public boolean insert(int index, E element) {
         if(index==0){
@@ -240,7 +286,11 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             return true;
         }
     }
-
+    /**
+     * Remueve el elmento en la posicion index
+     * @param index posicion aremover
+     * @return true, si se elimino correctamente.
+     */
     @Override
     public boolean remove(int index) {
         if(isEmpty() ||  index<0||index>=efectivo){//si esta vacio o elindice no es correcto
@@ -280,6 +330,11 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         
         return false;
     }
+    /**
+     * Consulta un nodo basado en su indice.
+     * @param index
+     * @return 
+     */
     private Node<E> nodeIndex(int index){
         if(isEmpty()|| (index<0&&index>=efectivo)){//si esta vacio o el indice no es correcto
             return null;
@@ -295,7 +350,10 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         }
         return null;
     }
-    
+    /**
+     * Crea una representacion String de la lista
+     * @return lista en String
+     */
     @Override
     public String toString(){
         if(isEmpty()) return "[]\n";
@@ -311,6 +369,11 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         return sb.toString();
            
     }
+    /**
+     * Comparador, compara 2 listas enlazadas dobles
+     * @param o
+     * @return true si son iguales.
+     */
     @Override
     public boolean equals(Object o){
         if (o == null || !(o instanceof DoublyLinkedList)){
@@ -333,12 +396,22 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         return true;
     }
     
-    
+    /**
+     * Comprueba si 2 Listas son una la Reversa de la otra.
+     * @param l1
+     * @param l2
+     * @return true si son reversas.
+     */
     public static boolean isReverse(DoublyLinkedList<Integer> l1, DoublyLinkedList<Integer> l2){
         //ver si l2 es reverse de l1
         return true;
     }
-
+    /**
+     * Condulta el indice que ocupa un elemento dentro de la lista.
+     * @param e
+     * @return 
+     * @throws NullPointerException 
+     */
     @Override
     public int indexOf(E e) throws NullPointerException {
         int index=0;
@@ -354,6 +427,11 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
         }
         return -1;
     }
+    
+    /**
+     * Crea un Iterator paara la lista
+     * @return 
+     */
     @Override
     public Iterator<E> iterator(){
          Iterator<E>it= new Iterator<E>(){
@@ -373,6 +451,10 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
          };
      return it;    
      }
+    /**
+     * Crea un listIterator para la lista
+     * @return 
+     */
      public ListIterator<E> listiterator(){
         ListIterator<E> lit = new ListIterator<E>(){
             private Node<E> p = first;
@@ -393,13 +475,18 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
 
             @Override
             public boolean hasPrevious() {
-                return p!=null;
+                if(i==efectivo){
+                    //el indice esta en null, 
+                    p=last;
+                }
+                return (p!=null);
             }
 
             @Override
             public E previous() {
+                //regreso el indice, si se hace next y previous unos tras otro deberia repetir infinitamente el mismo valor
                 E tmp = p.data;
-                p = p.previous;
+                p=p.previous;
                 i--;
                 return tmp;
             }
@@ -417,19 +504,26 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             @Override
             public void remove() {
                 if(!isEmpty()){
-                    Node<E> anterior=p.getPrevious();
-                    Node<E> siguiente=p.getNext();
+                    if(p==first){
+                        removeFirst();//elimina el primero validando
+                        p=first;
+                    }else if(p==last){
+                        removeLast();
+                        p=last;
+                    }else{
+                        Node<E> anterior=p.getPrevious();
+                        Node<E> siguiente=p.getNext();
                     
-                    anterior.setNext(siguiente);
-                    siguiente.setPrevious(anterior);
+                        anterior.setNext(siguiente);
+                        siguiente.setPrevious(anterior);
                     
-                    Node<E> borrado=p;
-                    borrado.setData(null);
-                    borrado.setNext(null);
-                    borrado.setPrevious(null);
+                        Node<E> borrado=p;
+                        borrado.setData(null);
+                        borrado.setNext(null);
+                        borrado.setPrevious(null);
                     
-                    p=siguiente;
-                    
+                        p=siguiente;
+                    }
                     
                 }
             }
@@ -445,6 +539,11 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             @Override
             public void add(E arg0) {
                 if(arg0!=null){
+                    if(p==first){
+                        addFirst(arg0);
+                    }else if(p==last){
+                        addLast(arg0);
+                    }else{
                     Node<E> anterior=p.getPrevious();
                     Node<E> nuevo=new Node<>(arg0);
                     anterior.setNext(nuevo);
@@ -452,13 +551,18 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
                     p.setPrevious(nuevo);
                     nuevo.setNext(p);
                     //el iterator se maantiene aqui
-                    
+                    }
+                    i++;
                 }
             }
         };
         return lit;
     }
-    
+    /**
+     * Crea un list iterator con inicio en index para la lista
+     * @param index
+     * @return 
+     */
     public ListIterator<E> listiterator(int index)
     {
         ListIterator<E> lit = new ListIterator<E>(){
@@ -480,13 +584,18 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
 
             @Override
             public boolean hasPrevious() {
-                return p!=null;
+                if(i==efectivo){
+                    //el indice esta en null, 
+                    p=last;
+                }
+                return (p!=null);
             }
 
             @Override
             public E previous() {
+                //regreso el indice, si se hace next y previous unos tras otro deberia repetir infinitamente el mismo valor
                 E tmp = p.data;
-                p = p.previous;
+                p=p.previous;
                 i--;
                 return tmp;
             }
@@ -504,19 +613,26 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             @Override
             public void remove() {
                 if(!isEmpty()){
-                    Node<E> anterior=p.getPrevious();
-                    Node<E> siguiente=p.getNext();
+                    if(p==first){
+                        removeFirst();//elimina el primero validando
+                        p=first;
+                    }else if(p==last){
+                        removeLast();
+                        p=last;
+                    }else{
+                        Node<E> anterior=p.getPrevious();
+                        Node<E> siguiente=p.getNext();
                     
-                    anterior.setNext(siguiente);
-                    siguiente.setPrevious(anterior);
+                        anterior.setNext(siguiente);
+                        siguiente.setPrevious(anterior);
                     
-                    Node<E> borrado=p;
-                    borrado.setData(null);
-                    borrado.setNext(null);
-                    borrado.setPrevious(null);
+                        Node<E> borrado=p;
+                        borrado.setData(null);
+                        borrado.setNext(null);
+                        borrado.setPrevious(null);
                     
-                    p=siguiente;
-                    
+                        p=siguiente;
+                    }
                     
                 }
             }
@@ -532,6 +648,11 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             @Override
             public void add(E arg0) {
                 if(arg0!=null){
+                    if(p==first){
+                        addFirst(arg0);
+                    }else if(p==last){
+                        addLast(arg0);
+                    }else{
                     Node<E> anterior=p.getPrevious();
                     Node<E> nuevo=new Node<>(arg0);
                     anterior.setNext(nuevo);
@@ -539,13 +660,17 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
                     p.setPrevious(nuevo);
                     nuevo.setNext(p);
                     //el iterator se maantiene aqui
-                    
+                    }
+                    i++;
                 }
             }
         };
         return lit;
     }
-    
+    /**
+     * Consulta si una lista es palindroma, es decir,se le igual de inicio a fin que de fin a inicio.
+     * @return 
+     */
     public boolean esPalindromoRecursivo(){
         if(isEmpty()){return false;
         }
@@ -565,7 +690,10 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
          }
         
     }
-    
+    /**
+     * Remueve todos los elementos e de la lista.
+     * @param e 
+     */
     public void removeAll(E e){
         ListIterator<E> itInicial=this.listiterator();
         ListIterator<E> itFinal=this.listiterator(efectivo);
@@ -591,6 +719,10 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             
         }
     }
+    /**
+     * Revierte la lista.
+     * @return true, si se revirtio correctamente
+     */
     public boolean reverse(){
         if(isEmpty() || efectivo==1)   return false;
         return reverse(first,last);
@@ -607,7 +739,12 @@ public class DoublyLinkedList <E> implements List<E>, Iterable<E>{
             return reverse(f.getNext(),l.getPrevious());
         }
     }
-
+    /**
+     * Genera un recorte de la lista desde la posicion start, hasta end
+     * @param start posicion inicial 
+     * @param end posicicion final, no incluida
+     * @return lista con el recorte.
+     */
     public DoublyLinkedList<E> slicing(int start,int end){
         DoublyLinkedList<E> nueva = new DoublyLinkedList<>();
         if(!isEmpty() && start<end){

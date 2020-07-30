@@ -23,9 +23,8 @@ public class BinaryTree<E> {
     }   
     //constructor con raiz nula;
     /**
-     * 
-     * @param n
-     * @return 
+     * Consulta si el arbol es completo
+     * @return true si es completo.
      */
     public boolean isFull(){    
        return isFull(root); 
@@ -38,7 +37,10 @@ public class BinaryTree<E> {
         }
         return  height(n.left) == height(n.right) && isFull(n.left) &&isFull(n.right);
     }
-    
+    /**
+     * Consulta altura del arbol
+     * @return 
+     */
     public int height(){
         return height(root);
     }
@@ -127,6 +129,11 @@ public class BinaryTree<E> {
             return searchNode(data,n.right);
         }
     }
+    /**
+     * Elimina el elemento del arbol
+     * @param child
+     * @return 
+     */
     public boolean remove(E child){
         if(child==null|| isEmpty()) return false;
         if(root.data.equals(child)){
@@ -157,7 +164,79 @@ public class BinaryTree<E> {
             return searchParent(child, n.right);
         }
     }
+    
+    /**
+     * Imprime el arbol en preOrden
+     * raiz, izq,derecha
+     */
+    public void preOrden(){
+        preOrden(root);
+    }
+    private void preOrden(Node<E> n){
+        if(n!=null){
+            System.out.println(n.data);
+            preOrden(n.left);
+            preOrden(n.right);
+        }
+    }
+    /**
+     * Imprime el arbol en PostOrden
+     * izq, derecho, raiz
+     */
+    public void postOrden(){
+        postOrden(root);
+    }
+    private void postOrden(Node<E> n)
+    {
+        if(n!=null){
+            postOrden(n.left);         
+            postOrden(n.right);
+            System.out.println(n);
+        }
+    }
+    /**
+     * Imprime el arbol en Orden
+     * izq, raiz, derecho
+     */
+    public void enOrden(){
+        enOrden(root);
+    }
+    private void enOrden(Node<E> n){
+        if(n!=null){
+            postOrden(n.left);
+            System.out.println(n);
+            postOrden(n.right);
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
+
+
+
+
 
 
 

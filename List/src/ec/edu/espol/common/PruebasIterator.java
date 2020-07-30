@@ -85,30 +85,36 @@ public class PruebasIterator {
         a.addLast(1);
         a.addLast(2);
         a.addLast(3);
-        
+        /*
         Iterator it=a.iterator();
         while(it.hasNext()){
             System.out.println(it.next());
         }
+        */
         ListIterator<Integer> lit= a.listiterator();
         while(lit.hasNext()){
             int n=lit.next();
-            if(n==3){
-                lit.remove();//remueve el 3
-            }
-            if(n==0){
-                lit.add(10);
-            }
+            System.out.println(n);
+            //if(n==3){
+            //    lit.remove();//remueve el 3
+            //}
+            //if(n==0){
+            //    lit.add(10);
+            //}
         }
+        //lit= a.listiterator();
         while(lit.hasPrevious()){
             System.out.println(lit.previous());
             
         }
+        
+        
+        /*
         ListIterator<Integer> liti=a.listiterator(2);
         while(liti.hasNext()){
             System.out.println(liti.next());
         }
-        
+        */
     }
     
 }
