@@ -5,12 +5,16 @@
  */
 package ec.edu.espol.tree;
 
+import java.util.Comparator;
+
 /**
  *
  * @author cajas
  */
 public class BinaryTree<E> {
     private Node<E> root;
+    //Comparartor auxiliar
+    private Comparator <E> f;
     
     private class Node<E>{
         private E data;
@@ -20,7 +24,18 @@ public class BinaryTree<E> {
         public Node(E data){
             this.data=data;
         }
-    }   
+
+        @Override
+        public String toString() {
+            return data.toString();
+        }
+        
+    }
+
+    public void setF(Comparator<E> f) {
+        this.f = f;
+    }
+    
     //constructor con raiz nula;
     /**
      * Consulta si el arbol es completo
@@ -209,8 +224,43 @@ public class BinaryTree<E> {
         }
     }
     
+    public boolean isBST(){
+        if(f==null){
+            throw new IllegalStateException("Comparador no implementado en el arbol");
+        }
+        return isBST(root);
+    }
+    private boolean isBST(Node<E> n){
+        if(n == null) return true;
+        boolean isBSTLeft;
+        boolean isBSTRight;
+        if(n.left==null) {
+            isBSTLeft=true;
+        }else{
+            isBSTLeft= (f.compare(n.left.data,n.data)<0) &&isBST(n.left)&&f.compare(max(n.left).data, n.data)<0;
+            
+        }
+        if(n.right == null){
+            isBSTRight =true;
+            
+        }else{
+            isBSTRight=(f.compare(n.right.data, n.data)>0)&& isBST(n.right)&&f.compare(min(n.right).data, n.data)>0;
+        }
+        
+            
+        return isBSTRight && isBSTLeft;
+    }
     
-    
+    private Node<E> min(Node<E> n){
+        if(n.left==null) return n;
+        return min(n.left);
+        
+    }
+    private Node<E> max(Node<E> n){
+        if(n.right==null) return n;
+        return max(n.right);
+        
+    }
     
     
     

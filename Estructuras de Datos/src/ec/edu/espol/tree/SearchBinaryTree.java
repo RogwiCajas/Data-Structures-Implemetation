@@ -6,6 +6,8 @@
 package ec.edu.espol.tree;
 
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -183,7 +185,132 @@ public class SearchBinaryTree<E> {
         }
     }
     
+    //////////////////////////////////// DEBER /////////////////////////////////
+    //Ejercicio 1
+    /**
+     * Calcula la distancia de un nodo a su ancestro
+     * @param currentAncestor
+     * @param e
+     * @return 
+     */
+    private int distanceAlAncestro( Node<E> currentAncestor,E e){
+        if(currentAncestor==null || f.compare(currentAncestor.data, e)==0){
+            //Si no hay mas nodos  o es el mismo.
+            return 0;
+        }
+        else if(f.compare(currentAncestor.data, e)>0){//current>e
+            return 1+ distanceAlAncestro(currentAncestor.left, e);
+        }
+        else if(f.compare(currentAncestor.data, e)<0){//current<e
+            return 1+ distanceAlAncestro(currentAncestor.right, e);
+        }
+        return 0;//hay que ver
+    }
+    /**
+     * Calula la distancia entre 2 nodos con un ancestro comun
+     * @param n1
+     * @param n2
+     * @param currentAncestor
+     * @return 
+     */
+    private int distanceBetweenNodes(E n1, E n2, Node<E> currentAncestor) {
+            if(currentAncestor==null) {
+                currentAncestor = this.root;
+            }
+            if(f.compare(n1, n2)>0){//n1 simpre debe ser menor que n2
+                E temp = n2;
+                n2 = n1;
+                n1 = temp;
+            }
+            
+            if( f.compare(currentAncestor.data, n1)>0 && f.compare(currentAncestor.data, n2)>0 ){
+                return this.distanceBetweenNodes(n1, n2, currentAncestor.left);
+            }
+            if(f.compare(currentAncestor.data, n1)<0 && f.compare(currentAncestor.data, n2)<0) {
+                return this.distanceBetweenNodes(n1, n2, currentAncestor.right);
+            }
+            if(f.compare(currentAncestor.data, n1)>=0 && f.compare(currentAncestor.data, n2)<=0) {
+                return distanceAlAncestro(currentAncestor, n1) + distanceAlAncestro(currentAncestor, n2);
+            }
+            return 0;//nunca se invoca.
+    }
+    /**
+     * Calula la distancia mas corta entre 2 nodos.
+     * @param n1
+     * @param n2
+     * @return 
+     */
+    public int distanceBetwenNodes(E n1, E n2){
+        return distanceBetweenNodes(n1, n2, root);
+    }
     
+    //--------------------------------------Tema 3//////////////////////////////
+    /**
+     * Retorna una lista con todas las claves del arbol derecho
+     * de la clave enviada como parametro
+     * @param clave
+     * @return 
+     */
+    public List<E> subDerecho(E clave){
+        List<E> lista=new LinkedList<>();
+        if(clave == null){
+            return lista;
+        }
+        return subDerecho(clave,root,false);
+    }
+    
+    private List<E> subDerecho(E clave, Node<E> n,boolean flag){
+        List<E> lista =new LinkedList<>();
+        if(n==null){
+            return lista;
+        }
+        if(f.compare(clave,n.data)>0){
+            //busco a la derecha. muevo el viajero a la derech
+            if(flag==true){//si esta dentro del hijo de recho de la clave
+                lista.add(n.data);
+            }
+            lista.addAll(subDerecho(clave,n.right,flag));
+        }
+        if(f.compare(clave,n.data)<0){
+            //busco a la izquierda.muevo el viajero a la izq
+            if(flag==true){//si esta dentro del hijo derecho de la clave
+                lista.add(n.data);
+            }
+            lista.addAll(subDerecho(clave,n.left,flag));//mando a agregar por izqu y por derecha
+            lista.addAll(subDerecho(clave,n.right,flag));
+        }
+        if(f.compare(clave,n.data)==0){
+            //me muevo a la drecha y guardo todos sus hijos
+            lista.addAll(subDerecho(clave,n.right,true));
+        }
+            
+        return lista;
+    }
+    
+    public int getLevel(E e){
+        if(e==null){
+            return  -1;
+        }
+        return getLevel(e,root);
+    }
+    private int getLevel(E e, Node<E> n){
+        if(n==null){
+            return -1;
+        }
+        else if(n.data.equals(e)){
+            
+            return 0;
+        }
+        else if(f.compare(e,n.data)>0){
+            int level=getLevel(e, n.right);
+            return (level == -1)? -1 : 1 + level;
+        }else {
+            int level=getLevel(e, n.left);
+            return (level == -1)? -1 : 1 + level;
+            
+        }
+        
+    }
     
     
     
