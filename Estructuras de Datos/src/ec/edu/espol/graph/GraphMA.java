@@ -86,8 +86,8 @@ public class GraphMA<E> {
      * @return 
      */
     public boolean removeEdge(E src, E dest){
-        //return addEdge(src,dest,0);
-        if(src == null | dest ==null) return false;
+        return addEdge(src,dest,0);
+        /*if(src == null | dest ==null) return false;
         int is = vertexes.indexOf(src);
         int id = vertexes.indexOf(dest);
         if(is==-1 | id== -1)return false;
@@ -95,7 +95,7 @@ public class GraphMA<E> {
         if(!directed){
             matrix[id][is] = 0;
         }
-        return true;
+        return true;*/
         
     }
     /**
@@ -106,9 +106,62 @@ public class GraphMA<E> {
      */
     @Override
     public String toString(){
-        return "";
+        String v = "V:  " + vertexes.toString() + "\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append(v);
+        sb.append("E: [");
+        for (int i = 0; i < vertexes.size(); i++) {
+            for (int j = 0; j < vertexes.size(); j++) {
+                if(matrix[i][j] != 0){
+                    sb.append("(");
+                    sb.append(vertexes.get(i)).append(",").append(vertexes.get(j)).append(",").append(matrix[i][j]);
+                    sb.append(")").append(","); //(A,B,1),
+                }
+            }  
+        }
+        sb.deleteCharAt(sb.length()-1);
+        sb.append("]\n");
+        return sb.toString();
     }
-    
+    /**
+     * Retorna el Numero de relacones que tienen a element como destino
+     * Retorna -1 si es null o element no es un vertice del graph
+     * @param element
+     * @return 
+     */
+    public int inDegree(E element){
+        if(element == null) return -1;
+        int vd= vertexes.indexOf(element);
+        if(vd == -1) return -1;
+        //Recorro las filas y cuento
+        int entradas = 0;
+        for(int i = 0; i<vertexes.size(); i++){
+            if(matrix[i][vd] != 0){
+                entradas++;
+            }
+        }
+        return entradas;
+    }
+    /**
+     * Retorna el numero de relaciones que tiene a element como origen.
+     * Retorna -1 si el elemento es null o no se encuentra en la lista de vertices
+     * @param element
+     * @return 
+     */
+    public int outDegree(E element){
+        if(element== null){
+            return -1;
+        }
+        int v=vertexes.indexOf(element);
+        if( v == -1) return -1;
+        int salidas=0;
+        for(int i = 0 ; i<vertexes.size() ; i++){
+            if(matrix[v][i]!=0) {
+                salidas ++;
+            }
+        }
+        return salidas;
+    }
 }
 
 
